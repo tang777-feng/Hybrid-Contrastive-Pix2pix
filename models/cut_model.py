@@ -88,7 +88,7 @@ class CUTModel(BaseModel):
             # --- 修改点 2: 定义 L1 Loss 函数 ---
             self.criterionL1 = torch.nn.L1Loss() # <--- 新增这行 
              # --- 修改点 3: 定义 L1 Loss 的权重 (你可以设为 10.0 或 100.0) ---
-            self.lambda_L1 = 10.0 # <--- 建议先设为 10.0 
+            self.lambda_L1 = 10.0 # <--- 先设为 10.0 
             self.criterionIdt = torch.nn.L1Loss().to(self.device)
             self.optimizer_G = torch.optim.Adam(self.netG.parameters(), lr=opt.lr, betas=(opt.beta1, opt.beta2))
             self.optimizer_D = torch.optim.Adam(self.netD.parameters(), lr=opt.lr, betas=(opt.beta1, opt.beta2))
@@ -219,3 +219,4 @@ class CUTModel(BaseModel):
             total_nce_loss += loss.mean()
 
         return total_nce_loss / n_layers
+
